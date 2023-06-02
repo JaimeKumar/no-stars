@@ -510,6 +510,7 @@ function App() {
           <div id='linkblog' className="navLink" onClick={navScroll}>BLOG</div>
           <div id='linkcontact' className="navLink" onClick={navScroll}>CONTACT US</div>
         </ul>
+        <div id="navMenuHide" onClick={openMenu}>➜</div>
       </div>
 
       <div className="pages">
