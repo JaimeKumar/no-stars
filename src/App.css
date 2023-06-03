@@ -48,8 +48,12 @@ body::-webkit-scrollbar {
   position: absolute;
   left: -100px;
   top: 45%;
-  transform: translateY(-50%) scaleX(-1);
   font-size: 1.5rem;
+  width: 25px;
+}
+
+#navMenuHide img {
+  width: 100%;
 }
 
 #navMenuBG {
@@ -293,7 +297,7 @@ h3 img {
   color: #111;
   opacity: 0;
   z-index: 101;
-  font-size: 10rem;
+  font-size: 10vmin;
   top: 50%;
   transform: translateY(-50%);
   transition: 0.3s;
@@ -1112,6 +1116,24 @@ a:link {
 /* MOBILE */
 @media only screen and (max-width: 800px) {
 
+  .navLink::after {
+    display: none;
+  }
+
+  .slideButton {
+    left: -5px;
+    color: white;
+  }
+
+  .right {
+    left: auto;
+    right: -5px;
+  }
+
+  .slideButton:hover {
+    opacity: 0.2;
+  }
+
   .roomBlock {
     height: auto;
   }
@@ -1258,11 +1280,12 @@ a:link {
     height: 100%;
     width: 120px;
     padding-left: 20px;
+    padding-top: 40px;
   }
 
   .navLink {
     margin-left: 0;
-    margin-top: 80px;
+    margin-top: 40px;
     text-align: left;
   }
 

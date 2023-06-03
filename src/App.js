@@ -10,6 +10,7 @@ import pinBlack from './locationPinBlack.svg'
 import Slide from './Slide';
 import Guest from './Guest';
 import Map from './Map';
+import arrowImg from './arrow.svg'
 
 function App() {
   
@@ -516,7 +517,9 @@ function App() {
           <div id='linkblog' className="navLink" onClick={navScroll}>BLOG</div>
           <div id='linkcontact' className="navLink" onClick={navScroll}>CONTACT US</div>
         </ul>
-        <div id="navMenuHide" onClick={openMenu}>➜</div>
+        <div id="navMenuHide" onClick={openMenu}>
+          <img src={arrowImg} alt="hide menu" />
+        </div>
       </div>
 
       <div className="pages">
@@ -528,8 +531,6 @@ function App() {
             <div id='slideRight' className="slideButton right" onClick={moveSlide}>
               》
             </div>
-            {/* <div className="fade main"></div> */}
-            {/* <div className="fade rev main"></div> */}
             <div className="slideshow">
               {rooms.map((room) => {
                 return <Slide key={room.id} slide={room} allRoomsFunc={allRoomsFunc} buttonClick={buttonClick} />
