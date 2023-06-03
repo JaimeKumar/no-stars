@@ -452,24 +452,30 @@ function App() {
 
   function expandRoom(id) {
     $(`#${id}roomInfo`).addClass('infoExpand')
-    $(`#${id}small4`).addClass('showGrid')
-    $(`#${id}list`).addClass('showList')
-    $(`#${id}roomBlock`).css({height: '1000px'})
+    $(`#${id}small4`).addClass('showGrid');
+    $(`#${id}list`).addClass('showList');
+    $(`#${id}roomBlock`).css({height: '1000px'});
+    $(`#${id}roomBlock`).addClass('roomExpanded');
+    $(`#${id}roomExpand`).css({height: 'auto'});
     $(`#${id}collapse`).addClass('showList');
+    $(`#${id}collapse`).addClass('showList');
+    $(`#bookRoom${id}`).css({display: 'flex'});
     setTimeout(() => {
       $(`#${id}roomBlock`).css({height: 'fit-content'})
     }, 750)
   }
-
+  
   function collapseRoom(id) {
     $(`#${id}roomBlock`).css({height: '1200px'})
     setTimeout(() => {
-      $(`#${id}roomBlock`).css({height: '400px'})
       $(`#${id}roomInfo`).removeClass('infoExpand')
       $(`#${id}small4`).removeClass('showGrid')
       $(`#${id}list`).removeClass('showList')
+      $(`#${id}roomExpand`).css({height: '0'});
+      $(`#${id}roomBlock`).removeClass('roomExpanded');
       $(`#${id}collapse`).removeClass('showList');
-
+      $(`#bookRoom${id}`).css({display: 'none'});
+      $(`#${id}roomBlock`).css({height: 'auto'})
     }, 50)
   }
 
@@ -592,29 +598,29 @@ function App() {
                   if ((i % 2) === 1) topClass += ' roomReverse'
                   return (
                     <div id={`${room.id}roomBlock`} className="roomBlock">
-                      <div className={topClass}>
-                        <div className="roomGallery">
-                          <img className='roomBlockImg' src={room.img} alt={room.name} onClick={() => {openImg(room.img)}} />
-                          <div id={`${room.id}small4`} className="small4" style={{left: (((i + 1) % 2) * 200) - 100 + '%'}}>
-                            {room.gallery.map(img => {
-                              let thisStyle = {paddingLeft: `${((i+1) % 2) * 5}%`, paddingRight: `${(i % 2) * 5}%`, width: '100%'};
-                              return (
-                                <div style={thisStyle}>
-                                  <div className="smallImgCont" style={{backgroundImage: `url(${img})`}} onClick={() => {openImg(img)}}>
-                                  </div>
-                                </div>
-                              )
-                            })}
-                          </div>
-                        </div>
-                        <div id={`${room.id}roomInfo`} className="roomInfo">
-                          <h1>{room.name}</h1>
-                          <h3><img src={pinBlack} alt="location" />{room.location}</h3>
-                          <p>{room.text}</p>
-                          <button className='roomButton' onClick={() => {expandRoom(room.id)}}>BOOK NOW</button>
-                        </div>
+                      <div className="roomBlockImgCont">
+                        <img className='roomBlockImg' src={room.img} alt={room.name} onClick={() => {openImg(room.img)}} />
                       </div>
-                      <div className="roomExpand">
+                      
+                      <div id={`${room.id}small4`} className="small4">
+                        {room.gallery.map(img => {
+                          let thisStyle = {paddingLeft: `${((i+1) % 2) * 5}%`, paddingRight: `${(i % 2) * 5}%`, width: '100%'};
+                          return (
+                            <div className='small4Cont'>
+                              <img src={img} onClick={() => {openImg(img)}}/>
+                            </div>
+                          )
+                        })}
+                      </div>
+                      
+                      <div id={`${room.id}roomInfo`} className="roomInfo">
+                        <h1>{room.name}</h1>
+                        <h3><img src={pinBlack} alt="location" />{room.location}</h3>
+                        <p>{room.text}</p>
+                        <button className='roomButton' onClick={() => {expandRoom(room.id)}}>BOOK NOW</button>
+                      </div>
+
+                      <div id={`${room.id}roomExpand`} className="roomExpand">
                         <div className="gearHalf">
                           <div id={`${room.id}list`} className="gearList">
                             {room.gear.map(list => {
@@ -636,7 +642,7 @@ function App() {
                         </div>
                         </div>
                         <div className="gearHalf">
-                            <iframe className='bookRoom' loading="lazy" title="Schedule Appointment" width="100%" height="100%" frameBorder="0" src={`https://app.acuityscheduling.com/schedule.php?owner=21042378&appointmentType=category:${room.category}`}></iframe>
+                            <iframe id={`bookRoom${room.id}`} className='bookRoom' loading="lazy" title="Schedule Appointment" width="100%" height="100%" frameBorder="0" src={`https://app.acuityscheduling.com/schedule.php?owner=21042378&appointmentType=category:${room.category}`}></iframe>
                         </div>
                         <div id={`${room.id}collapse`} className="collapseButton" onClick={() => {collapseRoom(room.id)}}>︿</div>
                       </div>
