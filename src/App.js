@@ -178,7 +178,7 @@ function App() {
     {
       name: 'Podcast Room',
       location: 'North London',
-      text: 'Our podcast room has some of the best equipment of its class. With a host of SM7b microphones, we make sure your voice is heard loud and clear. We have a large 55inch monitor to allow you to place your own logo in your podcast and cement your brand. Also, all our podcast sessions include free audio mixing, and if that isn’t enough, we’ve also thrown in free filming with our 6k Camera! What are you waiting for.. get the conversation going and book now here.',
+      text: 'Our podcast room has some of the best equipment of its class. With a host of SM7b microphones, we make sure your voice is heard loud and clear. We offer a 55inch monitor to place your own logo in your podcast and cement your brand. Also, all our podcast sessions include free audio mixing and free filming with our 6k Camera!',
       img: 'https://nostars.uk/wp-content/uploads/2021/05/A6A85494-163C-49A6-9C6A-F65E72E0973E.jpg',
       gallery: [
         'https://cdn-daboc.nitrocdn.com/NjAuFbRRIZQLkdPKRIeyFNieRKneuiuO/assets/static/optimized/rev-f48965d/wp-content/uploads/2021/04/podcast-img-2.jpg',
@@ -397,7 +397,7 @@ function App() {
 
   useEffect(() => {
     resize();
-    // startSlide();
+    startSlide();
   }, []);
 
   $(window).on('resize', resize);
@@ -775,7 +775,7 @@ function App() {
           <div className="containerCol">
             {/* <h1>Podcast Packages</h1> */}
             <div className="packageCont">
-              <iframe title='podcastFrame' id='podcastFrame' className='studioPackages' loading="eager" src="https://app.acuityscheduling.com/catalog.php?owner=21042378&#038;category=Podcast+Package" height="800"></iframe>
+              <iframe title='podcastFrame' id='podcastFrame' className='studioPackages' loading="lazy" src="https://app.acuityscheduling.com/catalog.php?owner=21042378&#038;category=Podcast+Package" height="800"></iframe>
               <div className="packageImgs">
                 <div id='podPack1' className="podcastPackImg" style={{background: `url(${rooms[6].img}) center/cover`}}></div>
                 <div id='podPack2' className="podcastPackImg" style={{background: `url(${rooms[4].img}) center/cover`, marginTop: '30px'}}></div>
@@ -797,7 +797,7 @@ function App() {
       
         <div id="footer">
           <div className="container" style={{alignItems: 'center'}}>
-            <img id='linkhome' className="navLogo" src={logo} alt='no stars logo' style={{transform: 'scale(0.9)'}} onClick={navScroll}></img>
+            <img id='footerhome' className="navLogo" src={logo} alt='no stars logo' style={{transform: 'scale(0.9)'}} onClick={navScroll}></img>
             
             <div id="footerContact">
               <a href="mailto:studios@nostars.uk">
