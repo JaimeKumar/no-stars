@@ -534,8 +534,9 @@ function App() {
               <div className='container' id='homeLinkCont'>
                 {homeLinks.map((link) => {
                   return (
-                    <div className="homeLink" style={{backgroundImage: `url(${link.img})`}} onClick={() => {navScroll({target: {id: link.link}})}} >
+                    <div className="homeLink" onClick={() => {navScroll({target: {id: link.link}})}} >
                       <div className="fillMask"></div>
+                      <img src={link.img} />
                       <div className="fillBubble"></div>
                       <div className="homeLinkText">
                         <h5>{link.name}</h5>
